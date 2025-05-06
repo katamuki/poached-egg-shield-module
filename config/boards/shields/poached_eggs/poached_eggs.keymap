@@ -72,7 +72,7 @@
     }; 
 
     behaviors {
-        tapping-term-ms = <200>;
+        tapping-term-ms = <300>;
         flavor = "tap-preferred";
     };
 };
