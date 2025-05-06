@@ -11,6 +11,7 @@
             timeout-ms = <50>;
             key-positions = <20 21>;  // KとLの位置
             bindings = <&kp LANG2>;   // 日本語入力に切り替え
+            layers = <0 1 2 3>;       // 全レイヤーで有効
         };
 
         // S+Dで英語入力に切り替え
@@ -18,6 +19,7 @@
             timeout-ms = <50>;
             key-positions = <14 15>;    // SとDの位置
             bindings = <&kp LANG1>;   // 英語入力に切り替え
+            layers = <0 1 2 3>;       // 全レイヤーで有効
         };
 
         // ESC + 右端のnoneキーでstudio_unlock
@@ -25,6 +27,7 @@
             timeout-ms = <50>;
             key-positions = <36 37>;
             bindings = <&studio_unlock>;
+            layers = <0 1 2 3>;       // 全レイヤーで有効
         };
     };
 
@@ -36,7 +39,7 @@
                 &kp TAB     &kp Q       &kp W       &kp E       &kp R       &kp T                               &kp Y       &kp U       &kp I       &kp O       &kp P       &kp BSPC
                 &kp LGUI    &kp A       &kp S       &kp D       &kp F       &kp G                               &kp H       &kp J       &kp K       &kp L       &kp MINUS   &kp SQT
                 &kp LSHFT   &kp Z       &kp X       &kp C       &kp V       &kp B                               &kp N       &kp M       &kp COMMA   &kp DOT     &kp FSLH    &kp RSHFT
-                &kp ESC     &none       &kp LCTRL   &kp LALT    &none       &kp SPACE   &kp TAB     &kp BSPC    &kp RET     &mo 2       &kp RGUI    &none       &none       &none
+                &kp ESC     &none       &kp LCTRL   &kp LALT    &none       &lt 1 SPACE   &kp TAB     &kp BSPC    &lt 2 RET     &mo 2       &kp RGUI    &none       &none       &none
             >;
         };
 
