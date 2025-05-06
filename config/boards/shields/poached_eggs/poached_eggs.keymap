@@ -10,7 +10,7 @@
         jp_toggle {
             timeout-ms = <50>;
             key-positions = <20 21>;  // KとLの位置
-            bindings = <&kp LANG>;   // 日本語入力に切り替え
+            bindings = <&kp LANG1>;   // 日本語入力に切り替え
             layers = <0 1 2 3>;       // 全レイヤーで有効
         };
 
