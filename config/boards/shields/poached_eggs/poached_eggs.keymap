@@ -3,10 +3,19 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+    
+    behaviors {
+        mod-tap {
+            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
+            equire-prior-idle-ms = <125>;
+        };
+    };
+
     combos {
         compatible = "zmk,combos";
         
-        // K+Lで日本語入力に切り替え
+        // K+Lで日本語入力（LANG1）に切り替え
         jp_toggle {
             timeout-ms = <50>;
             key-positions = <20 21>;  // KとLの位置
@@ -14,7 +23,7 @@
             layers = <0 1 2 3>;       // 全レイヤーで有効
         };
 
-        // S+Dで英語入力に切り替え
+        // S+Dで英語入力（LANG2）に切り替え
         en_toggle {
             timeout-ms = <50>;
             key-positions = <14 15>;    // SとDの位置
@@ -22,12 +31,12 @@
             layers = <0 1 2 3>;       // 全レイヤーで有効
         };
 
-        // ESC + 右端のnoneキーでstudio_unlock
-        studio_unlock_combo {
+        // ESC + 右端のnoneキーでレイヤー3に切り替え
+        layer3_combo {
             timeout-ms = <50>;
             key-positions = <36 37>;
-            bindings = <&studio_unlock>;
-            layers = <0 1 2 3>;       // 全レイヤーで有効
+            bindings = <&mo 3>;
+            layers = <0>;       // レイヤー0でのみ有効
         };
     };
 
@@ -56,7 +65,7 @@
             bindings = <
                 &kp F1      &kp F2      &kp F3      &kp F4      &kp F5      &kp LBKT                           &kp RBKT    &none       &kp UP      &none       &kp TILDE   &kp F12
                 &none       &none       &none       &none       &none       &kp LPAR                           &kp RPAR    &kp LEFT    &kp DOWN    &kp RIGHT   &kp SEMI    &none
-                &none       &none       &none       &none       &none       &kp LBKT                           &kp RBKT    &kp MINUS   &kp EQUAL   &kp LBKT    &kp RBKT    &kp BSLH
+                &kp LSHFT   &kp LSHFT   &none       &none       &none       &kp LBKT                           &kp RBKT    &kp MINUS   &kp EQUAL   &kp LBKT    &kp RBKT    &kp BSLH
                 &none       &none       &none       &trans      &trans      &mo 3       &trans      &kp DEL     &trans      &trans      &trans      &none       &none       &none
             >;
         };
@@ -71,9 +80,5 @@
         };
     }; 
 
-    behaviors {
-        tapping-term-ms = <300>;
-        flavor = "tap-preferred";
-        hold-trigger-on-release;
-    };
+
 };
