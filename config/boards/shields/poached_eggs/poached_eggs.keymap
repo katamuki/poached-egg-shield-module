@@ -3,14 +3,6 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
-    
-    htc: behavior_hold_tap_custom {
-        compatible = "zmk,behavior-hold-tap";
-        bindings = <&kp NONE &kp NONE>;  // プレースホルダー（ここでは使われない）
-        tapping-term-ms = <180>;
-        quick-tap-ms = <120>;
-        flavor = "tap-preferred";
-    };
 
     combos {
         compatible = "zmk,combos";
@@ -46,7 +38,7 @@
         default_layer {
             bindings = <
                 &kp TAB     &kp Q       &kp W       &kp E       &kp R       &kp T                               &kp Y       &kp U       &kp I       &kp O       &kp P       &kp BSPC
-                &kp LGUI    &htc <LGUI A> &kp S       &kp D       &htc <LSHFT F> &kp G                           &kp H       &htc <RSHFT J> &kp K       &kp L       &htc <RGUI MINUS> &kp SQT
+                &kp LGUI    &mt LGUI A  &kp S       &kp D       &mt LSHFT F &kp G                               &kp H       &mt RSHFT J &kp K       &kp L       &mt RGUI MINUS   &kp SQT
                 &kp LSHFT   &kp Z       &kp X       &kp C       &kp V       &kp B                               &kp N       &kp M       &kp COMMA   &kp DOT     &kp FSLH    &kp RSHFT
                 &kp ESC     &none       &kp LCTRL   &kp LALT    &none       &lt 1 SPACE   &kp TAB     &kp BSPC    &lt 2 RET     &mo 2       &kp RGUI    &none       &none       &none
             >;
