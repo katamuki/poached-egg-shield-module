@@ -6,6 +6,7 @@
     
     htc: behavior_hold_tap_custom {
         compatible = "zmk,behavior-hold-tap";
+        bindings = <&kp NONE &kp NONE>;  // プレースホルダー（ここでは使われない）
         tapping-term-ms = <180>;
         quick-tap-ms = <120>;
         flavor = "tap-preferred";
