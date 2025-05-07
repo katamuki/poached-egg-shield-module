@@ -7,27 +7,19 @@
     combos {
         compatible = "zmk,combos";
         
-        // K+Lで日本語入力に切り替え
+        // K+Lで日本語入力 LANG1 に切り替え
         jp_toggle {
             timeout-ms = <50>;
             key-positions = <20 21>;  // KとLの位置
-            bindings = <&kp LANG2>;   // 日本語入力に切り替え
+            bindings = <&kp LANG1>;   // 日本語入力に切り替え
             layers = <0 1 2 3>;       // 全レイヤーで有効
         };
 
-        // S+Dで英語入力に切り替え
+        // S+Dで英語入力 LANG2 に切り替え
         en_toggle {
             timeout-ms = <50>;
             key-positions = <14 15>;    // SとDの位置
-            bindings = <&kp LANG1>;   // 英語入力に切り替え
-            layers = <0 1 2 3>;       // 全レイヤーで有効
-        };
-
-        // ESC + 右端のnoneキーでstudio_unlock
-        studio_unlock_combo {
-            timeout-ms = <50>;
-            key-positions = <36 37>;
-            bindings = <&studio_unlock>;
+            bindings = <&kp LANG2>;   // 英語入力に切り替え
             layers = <0 1 2 3>;       // 全レイヤーで有効
         };
     };
@@ -72,9 +64,4 @@
         };
     }; 
 
-    behaviors {
-        tapping-term-ms = <250>;
-        flavor = "tap-preferred";
-        hold-trigger-on-release;
-    };
 };
