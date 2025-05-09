@@ -9,8 +9,16 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <3750>;
-            quick-tap-ms = <50>;
+            quick-tap-ms = <150>;
             require-prior-idle-ms = <125>;
+        };
+        hmt: homerow_mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <1200>;
+            quick-tap-ms = <150>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
         };
     };
 
@@ -48,7 +56,7 @@
         default_layer {
             bindings = <
                 &kp TAB     &kp Q       &kp W       &kp E       &kp R       &kp T                               &kp Y       &kp U       &kp I       &kp O       &kp P       &kp BSPC
-                &kp LGUI    &mt LGUI A  &kp S       &kp D       &mt LSHFT F &kp G                               &kp H       &mt RSHFT J &kp K       &kp L       &mt RGUI MINUS   &kp SQT
+                &kp LGUI    &hmt LGUI A  &kp S       &kp D       &hmt LSHFT F &kp G                               &kp H       &mt RSHFT J &kp K       &kp L       &mt RGUI MINUS   &kp SQT
                 &kp LSHFT   &kp Z       &kp X       &kp C       &kp V       &kp B                               &kp N       &kp M       &kp COMMA   &kp DOT     &kp FSLH    &kp RSHFT
                 &kp ESC     &none       &kp LCTRL   &kp LALT    &none       &lt 1 SPACE   &kp TAB     &kp BSPC    &lt 2 RET     &mo 2       &kp RGUI    &none       &none       &none
             >;
