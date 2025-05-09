@@ -7,7 +7,7 @@
         mt {
             compatible = "zmk,behavior-mod-tap";
             #binding-cells = <2>;
-            flavor = "balancedtap-preferred";
+            flavor = "tap-preferred";
             tapping-term-ms = <250>;
             quick-tap-ms = <50>;
             require-prior-idle-ms = <125>;
