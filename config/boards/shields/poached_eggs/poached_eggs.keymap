@@ -67,7 +67,7 @@
         raise_layer {
             bindings = <
                 &kp F1      &kp F2      &kp F3      &kp F4      &kp F5      &kp LBKT                           &kp RBKT    &none       &kp UP      &none       &kp TILDE   &kp F12
-                &none       &hmt LGUI A LG(A)  &hmt LCTRL LG(S)       &hmt LALT LG(D)      &hmt LSHFT LG(F)      &kp LPAR                           &kp RPAR    &kp LEFT    &kp DOWN    &kp RIGHT   &kp SEMI    &none
+                &none       &hmt LGUI LG(A)  &hmt LCTRL LG(S)       &hmt LALT LG(D)      &hmt LSHFT LG(F)      &kp LPAR                           &kp RPAR    &kp LEFT    &kp DOWN    &kp RIGHT   &kp SEMI    &none
                 &kp LSHFT   &hmt LSHFT LG(X)   &kp LG(X)       &kp LG(C)       &kp LG(V)       &kp LBKT                           &kp RBKT    &kp MINUS   &kp EQUAL   &kp LBKT    &kp RBKT    &kp BSLH
                 &none       &none       &none       &trans      &trans      &trans       &trans      &kp DEL     &trans      &trans      &trans      &none       &none       &none
             >;
