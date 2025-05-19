@@ -3,43 +3,83 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+    behaviors {
+        hmt: homerow_mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <220>;
+            quick-tap-ms = <100>;
+            require-prior-idle-ms = <150>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+        
+        // K+Lで日本語入力（LANG1）に切り替え
+        jp_toggle {
+            timeout-ms = <50>;
+            key-positions = <20 21>;  // KとLの位置
+            bindings = <&kp LANG1>;   // 日本語入力に切り替え
+            layers = <0 1 2 3>;       // 全レイヤーで有効
+        };
+
+        // S+Dで英語入力（LANG2）に切り替え
+        en_toggle {
+            timeout-ms = <50>;
+            key-positions = <14 15>;  // SとDの位置
+            bindings = <&kp LANG2>;   // 英語入力に切り替え
+            layers = <0 1 2 3>;       // 全レイヤーで有効
+        };
+
+        // ESC + 右端のnoneキーでレイヤー3に切り替え
+        layer3_combo {
+            timeout-ms = <50>;
+            key-positions = <36 37>;
+            bindings = <&mo 3>;
+            layers = <0>;       // レイヤー0でのみ有効
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-                &kp TAB     &kp Q       &kp W       &kp E       &kp R       &kp T                                &kp Y       &kp U        &kp I       &kp O       &kp P        &kp MINUS
-                &kp LCTRL   &kp A       &kp S       &kp D       &kp F       &kp G                                &kp H       &kp J        &kp K       &kp L       &kp SEMI     &kp SQT
-                &kp LSHFT   &kp Z       &kp X       &kp C       &kp V       &kp B                                &kp N       &kp M        &kp COMMA   &kp DOT     &kp FSLH     &kp RSHFT
-                &none       &none       &none       &kp LGUI    &kp LALT    &mo 1       &kp SPACE    &kp RET     &mo 2       &kp BSPC     &kp RGUI    &none       &none        &none
+                &kp TAB     &kp Q       &kp W       &kp E       &kp R       &kp T                               &kp Y       &kp U       &kp I       &kp O       &kp P       &kp BSPC
+                &kp LGUI    &hmt LGUI A  &hmt LCTRL S       &hmt LALT D       &hmt LSHFT F &kp G                               &kp H       &hmt RSHFT J &kp K       &kp L       &hmt RGUI MINUS   &kp SQT
+                &kp LSHFT   &hmt LSHFT Z       &kp X       &kp C       &kp V       &kp B                               &kp N       &kp M       &kp COMMA   &kp DOT     &hmt RSHFT FSLH    &kp RSHFT
+                &kp ESC     &none       &kp LCTRL   &kp LALT    &none       &lt 1 SPACE   &kp TAB     &kp BSPC    &lt 2 RET     &mo 2       &kp RGUI    &none       &none       &none
             >;
         };
 
         lower_layer {
             bindings = <
-                &kp ESC     &kp N1      &kp N2      &kp N3      &kp N4      &kp N5                              &kp N6      &kp N7      &kp N8      &kp N9      &kp N0      &kp GRAVE
-                &kp GRAVE   &kp EXCL    &kp AT      &kp HASH    &kp DOLLAR  &kp PRCNT                           &kp CARET   &kp AMPS    &kp ASTRK   &kp LPAR    &kp RPAR    &kp TILDE
-                &kp RET     &none       &none       &none       &none       &none                               &none       &none       &none       &kp PLUS    &kp MINUS   &kp PIPE
-                &none       &none       &none       &trans      &trans      &trans      &kp DEL     &trans      &mo 3       &trans      &trans      &none       &none       &none
+                &kp ESC     &kp EXCL    &kp AT      &kp HASH    &kp DOLLAR  &kp PRCNT                           &kp CARET   &kp AMPS    &kp ASTRK   &kp LPAR    &kp RPAR    &kp GRAVE
+                &kp GRAVE   &kp N1      &kp N2      &kp N3      &kp N4      &kp N5                              &kp N6      &kp N7      &kp N8      &kp N9      &kp N0      &kp TILDE
+                &kp RET     &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                              &kp F6      &kp F7      &kp F8      &kp F9      &kp F10     &kp PIPE
+                &none       &none       &none       &trans      &trans      &trans      &trans      &trans      &kp RET       &trans      &trans      &none       &none       &none
             >;
         };
 
         raise_layer {
             bindings = <
-                &kp F1      &kp F2      &kp F3      &kp F4      &kp F5      &kp F6                              &kp F7      &kp F8      &kp F9      &kp F10     &kp F11     &kp F12
-                &none       &none       &none       &none       &none       &none                               &none       &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &none
-                &none       &none       &none       &none       &none       &none                               &kp PLUS    &kp MINUS   &kp EQUAL   &kp LBKT    &kp RBKT    &kp BSLH
-                &none       &none       &none       &trans      &trans      &mo 3       &trans      &kp DEL     &trans      &trans      &trans      &none       &none       &none
+                &kp F1      &kp F2      &kp F3      &kp F4      &kp F5      &kp LBKT                           &kp RBKT    &none       &kp UP      &none       &kp TILDE   &kp F12
+                &none       &hmt LGUI LG(A)  &hmt LCTRL LG(S)       &hmt LALT LG(D)      &hmt LSHFT LG(F)      &kp LPAR                           &kp RPAR    &kp LEFT    &kp DOWN    &kp RIGHT   &kp SEMI    &none
+                &kp LSHFT   &hmt LSHFT LG(X)   &kp LG(X)       &kp LG(C)       &kp LG(V)       &kp LBKT                           &kp RBKT    &kp MINUS   &kp EQUAL   &kp LBKT    &kp RBKT    &kp BSLH
+                &none       &none       &none       &trans      &trans      &trans       &trans      &kp DEL     &trans      &trans      &trans      &none       &none       &none
             >;
         };
 
         bt_layer {
             bindings = <
-                &bt BT_CLR      &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                         &none       &none       &none       &none       &none       &none
-                &studio_unlock  &none        &none        &none        &none        &none                                &none       &none       &none       &none       &none       &none
-                &none           &none        &none        &none        &none        &none                                &none       &none       &none       &none       &none       &none
+                &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_CLR                        &none       &none       &none       &none       &none       &none
+                &studio_unlock  &none        &none        &none        &none        &none                          &none       &none       &none       &none       &none       &none
+                &none           &none        &none        &none        &none        &none                          &none       &none       &none       &none       &none       &none
                 &kp O           &kp M        &kp U        &none        &none        &none        &none       &none       &none       &none       &none       &kp K       &kp E       &kp N
             >;
         };
-    };
+    }; 
 };
